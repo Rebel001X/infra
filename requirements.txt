@@ -15,6 +15,15 @@ peft>=0.13
 trl>=0.12
 bitsandbytes>=0.44; platform_system != "Darwin"
 
+# 2026 单卡 SFT/DPO/GRPO 事实标准(Linux 限定)
+unsloth>=2025.10; platform_system == "Linux"
+liger-kernel>=0.5; platform_system == "Linux"
+
+# 数据工程 + 评测
+datatrove>=0.3; platform_system == "Linux"
+datasketch>=1.6
+lm-eval>=0.4.5
+
 # vLLM 仅 Linux 官方支持
 vllm>=0.6; platform_system == "Linux"
 llama-cpp-python>=0.3

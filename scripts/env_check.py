@@ -74,6 +74,10 @@ def check(extras: tuple[str, ...] = ()) -> list[Result]:
         results.append(_check_pkg(pkg))
     results.append(_check_bnb())
 
+    # v2 工具栈:Unsloth + Liger Kernel + datatrove + lm-eval(非致命,缺了对应章节才用)
+    for pkg in ("unsloth", "liger_kernel", "datatrove", "datasketch", "lm_eval"):
+        results.append(_check_pkg(pkg, fatal=False))
+
     for extra in extras:
         results.append(_check_pkg(extra, fatal=False))
 

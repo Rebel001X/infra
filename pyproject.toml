@@ -18,10 +18,18 @@ dependencies = [
     "einops>=0.8",
     "safetensors>=0.4",
 
-    # PEFT / 对齐
+    # PEFT / 对齐 / 训练加速
     "peft>=0.13",
     "trl>=0.12",
     "bitsandbytes>=0.44 ; platform_system != 'Darwin'",
+    # Unsloth + Liger 是 2026 单卡 SFT/DPO/GRPO 的事实标准
+    "unsloth>=2025.10 ; platform_system == 'Linux'",
+    "liger-kernel>=0.5 ; platform_system == 'Linux'",
+
+    # 数据工程 + 评测
+    "datatrove>=0.3 ; platform_system == 'Linux'",
+    "datasketch>=1.6",
+    "lm-eval>=0.4.5",
 
     # 推理与部署
     "vllm>=0.6 ; platform_system == 'Linux'",
