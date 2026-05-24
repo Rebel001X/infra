@@ -1,0 +1,68 @@
+[project]
+name = "enigneer-infra"
+version = "0.0.1"
+description = "动手做 AI-Infra:用 Qwen2.5-1.5B 把 pretrain / SFT / DPO / GRPO / 推理部署 整条链路跑一遍"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "Apache-2.0" }
+authors = [{ name = "jianm" }]
+
+dependencies = [
+    # 核心训练栈
+    "torch>=2.4,<2.7",
+    "transformers>=4.45,<5",
+    "accelerate>=1.0",
+    "datasets>=3.0",
+    "tokenizers>=0.20",
+    "sentencepiece>=0.2",
+    "einops>=0.8",
+    "safetensors>=0.4",
+
+    # PEFT / 对齐
+    "peft>=0.13",
+    "trl>=0.12",
+    "bitsandbytes>=0.44 ; platform_system != 'Darwin'",
+
+    # 推理与部署
+    "vllm>=0.6 ; platform_system == 'Linux'",
+    "llama-cpp-python>=0.3",
+    "auto-gptq>=0.7 ; platform_system != 'Darwin'",
+
+    # 数据处理 / 可视化 / 实验追踪
+    "numpy>=1.26,<3",
+    "pandas>=2.2",
+    "matplotlib>=3.9",
+    "seaborn>=0.13",
+    "tqdm>=4.66",
+    "wandb>=0.18",
+    "tensorboard>=2.17",
+
+    # Notebook 环境
+    "jupyter>=1.1",
+    "jupyterlab>=4.2",
+    "ipywidgets>=8.1",
+
+    # 工具
+    "rich>=13.9",
+    "huggingface-hub>=0.26",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.7",
+    "pytest>=8.3",
+    "ipykernel>=6.29",
+    "nbqa>=1.9",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+ignore = ["E501"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

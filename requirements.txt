@@ -1,0 +1,36 @@
+# 不会 uv 的 pip 用户可以用这个;权威依赖以 pyproject.toml 为准
+# 安装:pip install -r requirements.txt
+# Windows 用户 bitsandbytes 装不上请看 docs/硬件与环境.md
+
+torch>=2.4,<2.7
+transformers>=4.45,<5
+accelerate>=1.0
+datasets>=3.0
+tokenizers>=0.20
+sentencepiece>=0.2
+einops>=0.8
+safetensors>=0.4
+
+peft>=0.13
+trl>=0.12
+bitsandbytes>=0.44; platform_system != "Darwin"
+
+# vLLM 仅 Linux 官方支持
+vllm>=0.6; platform_system == "Linux"
+llama-cpp-python>=0.3
+auto-gptq>=0.7; platform_system != "Darwin"
+
+numpy>=1.26,<3
+pandas>=2.2
+matplotlib>=3.9
+seaborn>=0.13
+tqdm>=4.66
+wandb>=0.18
+tensorboard>=2.17
+
+jupyter>=1.1
+jupyterlab>=4.2
+ipywidgets>=8.1
+
+rich>=13.9
+huggingface-hub>=0.26
